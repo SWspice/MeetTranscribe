@@ -1,0 +1,44 @@
+{
+	"name": "Meet Transcriber",
+	"description": "Transcibe Google Meetings",
+	"version": "0.01",
+	"manifest_version": 2,
+	"options_page": "options.html",
+
+	"permissions": [
+		"storage",
+		"tabs",
+		"contextMenus",
+		"http://*/*",
+		"https://*/*"
+	],
+
+	"icons": {
+		"24": "icons/supreme_24.png",
+		"48": "icons/supreme_48.png",
+		"64": "icons/supreme_64.png",
+		"128": "icons/supreme_128.png",
+		"175": "icons/supreme_175.png"
+	},
+	"background": {
+		"scripts": [
+			"background.js"
+		]
+	},
+
+	"content_scripts": [
+		{
+			"matches": ["https://meet.google.com/*"],
+			"css": [],
+			"js": ["js/jquery.min.js", "client.js"],
+			"run_at": "document_start",
+			"all_frames": false
+		}
+	],
+
+	"web_accessible_resources": [
+		"/compressed/*",
+		"/icons/*"
+	]
+}
+

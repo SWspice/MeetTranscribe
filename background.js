@@ -4,6 +4,7 @@
 (function() {
     "use strict";
 
+    console.log("Hello World!");
     /*
     function dummy(request, port){
         port.postMessage(resp)

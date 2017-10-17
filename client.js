@@ -4,6 +4,7 @@
 (function () {
 	"use strict";
 
+
 	function execBackend(name, func_arguments, callback) {
 	    // port between front and backend
 	    var port = chrome.runtime.connect({
@@ -20,24 +21,42 @@
 
 	function getVendorConfig(url){
 		// Google Meet
-		var config = {
-			"voiceSelector" : ""
-			"nameSelector" : ""
-		}
+		var config = {};
 
 		if (url.includes("https://meet.google.com/")){
-			config.voiceSelector = ".IisKdb.iKxd7c.KaYEA.gjg47c";
-			config.nameSelector = ".MyoDDb";
+			config.voice = ".IisKdb.iKxd7c.KaYEA";
+			config.name = ".MyoDDb";
+			config.speak = ".HX2H7";
 		}
 
 		return config
 	}
 
 	function init(config) {
-		alert("Hello World");
+		console.log(config);
+		// start watching for people speaking
+
+	    // fires when somebody speaks
+	    sentinel.on(config.speak, function(el){
+			console.log("speaking")
+			console.log(el)
+			console.log($(config.name))
+		});
+
+		// fires when people enter
+		sentinel.on(config.name, function(el){
+			console.log("Person entered")
+			console.log(el)
+			console.log($(config.name))
+		});
+	    
+	    // TODO inject window
+	    // TODO write events to window
+	    // TODO get audio stream
+	    // TODO transcribe audio stream
 	}
 
-	init(getVendorConfig(window.location));
+	init(getVendorConfig(window.location.href));
 
 } ());
 

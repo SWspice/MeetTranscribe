@@ -30,8 +30,8 @@
 		{
 			"matches": ["https://meet.google.com/*"],
 			"css": [],
-			"js": ["js/jquery.min.js", "client.js"],
-			"run_at": "document_start",
+			"js": ["js/jquery.min.js", "sentinel.js", "client.js"],
+			"run_at": "document_end",
 			"all_frames": false
 		}
 	],
